@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Редактирование клиента</h2>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field class="form-field">
+      <mat-label>ФИО</mat-label>
+      <input matInput [(ngModel)]="data.fio" name="fio">
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="data.email" name="email">
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Телефон</mat-label>
+      <input matInput [(ngModel)]="data.phone" name="phone">
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>День рождения</mat-label>
+      <input matInput [(ngModel)]="data.birthday" name="birthday" type="date">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Отмена</button>
+  <button mat-button (click)="save()">Сохранить</button>
+</div>

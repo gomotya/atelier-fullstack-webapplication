@@ -1,0 +1,30 @@
+<h1>Услуги</h1>
+<div class="add">
+  <button *ngIf="AuthService.isLoggedIn" mat-button (click)="addService()">Добавить услугу</button>
+</div>
+<div class="search">
+  <span><input type="text" [(ngModel)]="searchTerm" placeholder="Поиск по названию услуги" class="search-input"></span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th *ngIf="AuthService.isLoggedIn" >ID</th>
+      <th>Название</th>
+      <th>Цена</th>
+      <th>Доп.Цена</th>
+      <th *ngIf="AuthService.isLoggedIn">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of services | filter: searchTerm: 'service_name'">
+      <td *ngIf="AuthService.isLoggedIn">{{ service.id }}</td>
+      <td>{{ service.service_name }}</td>
+      <td>{{ service.service_cost }}</td>
+      <td>{{ service.service_add_cost }}</td>
+      <td *ngIf="AuthService.isLoggedIn">
+        <button  mat-button (click)="editService(service) ">Редактировать</button>
+        <button  mat-button (click)="deleteService(service.id)">Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

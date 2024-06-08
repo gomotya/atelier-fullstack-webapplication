@@ -1,0 +1,33 @@
+<h2>Заказы</h2>
+<div class="add">
+  <button mat-button (click)="addOrder()">Добавить заказ</button>
+</div>
+<div class="search">
+  <span><input type="text" [(ngModel)]="searchTerm" placeholder="Поиск заказа по имени клиента" class="search-input"></span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Клиент</th>
+      <th>Сотрудник</th>
+      <th>Тип заказа</th>
+      <th>Дата заказа</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders  | filter: searchTerm: 'client_name'">
+      <td>{{ order.id }}</td>
+      <td>{{ order.client_name }}</td>
+      <td>{{ order.employee_name}}</td>
+      <td>{{ order.type }}</td>
+      <td>{{ order.order_date}}</td>
+      <td>
+        <button mat-button (click)="viewOrderDetails(order.id, order.order_date)">Состав</button>
+        <button mat-button (click)="editOrder(order)">Редактировать</button>
+        <button mat-button (click)="deleteOrder(order.id)">Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

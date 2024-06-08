@@ -1,0 +1,7 @@
+Отчет за дату: {date}
+Общая сумма дня: {totalCost}
+
+Клиенты:
+{#clientOrders}
+- {client_name}: {total_cost}
+{/clientOrders}

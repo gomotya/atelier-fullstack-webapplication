@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Состав заказа №{{ this.data.orderId }} от {{ this.data.date }}</h2>
+<mat-dialog-content>
+  <table>
+    <thead>
+      <tr>
+        <th>Услуга</th>
+        <th>Количество</th>
+        <th>Стоимость</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of orderDetails">
+        <td>{{ detail.service_name }}</td> <!-- Название услуги -->
+        <td>{{ detail.amount }}</td>
+        <td>{{ detail.cost }}</td>
+        <td>
+          <button mat-button (click)="editOrderDetail(detail)">Редактировать</button>
+          <button mat-button (click)="deleteOrderDetail(detail.id)">Удалить</button>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Итого:</strong></td>
+        <td></td>
+        <td>{{ totalCost  }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <form [formGroup]="orderDetailForm" (ngSubmit)="editedDetail ? saveOrderDetail() : addOrderDetail()">
+    <mat-form-field>
+      <mat-label>Услуга</mat-label>
+      <mat-select formControlName="service_id" >
+        <mat-option *ngFor="let service of services" [value]="service.id">
+          {{ service.service_name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Количество</mat-label>
+      <input matInput formControlName="amount">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Стоимость</mat-label>
+      <input matInput formControlName="cost">
+    </mat-form-field>
+    <button mat-button type="submit">{{ editedDetail ? 'Сохранить' : 'Добавить' }}</button>
+    <button mat-button *ngIf="editedDetail" (click)="backFromEdit()">Назад</button>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Закрыть</button>
+</mat-dialog-actions>

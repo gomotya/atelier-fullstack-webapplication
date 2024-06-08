@@ -1,0 +1,31 @@
+<div class="report-container">
+  <div class="date-picker-container">
+    <label for="reportDate">Выберите дату:</label>
+    <input type="date" id="reportDate" [(ngModel)]="selectedDate" (change)="generateReport()">
+  </div>
+
+  <div *ngIf="SumOfTheDay !== undefined" class="summary-container">
+    <h3>Итоговая сумма за {{ selectedDate | dateFormat }}: <br> {{ SumOfTheDay | currency:'₽' }}</h3>
+  </div>
+
+  <table *ngIf="clientOrders.length > 0">
+    <thead>
+      <tr>
+        <th>Клиент</th>
+        <th>Сумма заказа</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of clientOrders">
+        <td>{{ order.client_name }}</td>
+        <td>{{ order.total_cost | currency:'₽' }}</td>
+      </tr>
+      <tr>
+        <td class="total-label">Итого:</td>
+        <td class="total-value">{{ SumOfTheDay | currency:'₽' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="downloadReport()" class="download-button">Скачать отчет</button>
+</div>

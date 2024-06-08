@@ -1,0 +1,16 @@
+<div style="background-color: #f2f2f2; padding: 10px; border-radius: 5px; margin: 0 auto; margin-bottom: 20px; width: 95%; ">
+  <p style="font-size: 18px; color: #333; text-align: center; margin: 0;">Диаграмма "Количество услуг" <br> <br> Данная диаграмма демонстрирует в визуальном представлении какое количество услуг было оказано клиентам за всё время.</p>
+</div>
+<div>
+<table style="width: 95%; margin: 0 auto;">
+  <tr>
+    <td>
+      <ngx-charts-bar-vertical [results]="dataForChart"   [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel" [yAxisLabel]="xAxisLabel" [legendTitle]="legendTitle"  [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
+                [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
+                [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+            </ngx-charts-bar-vertical>
+    </td>
+  </tr>
+</table>
+</div>

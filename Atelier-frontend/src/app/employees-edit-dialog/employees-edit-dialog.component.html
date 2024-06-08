@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Редактировать сотрудника</h2>
+<mat-dialog-content>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field">
+      <mat-label>ФИО</mat-label>
+      <input matInput formControlName="fio" />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Должность</mat-label>
+      <mat-select formControlName="job_title_id">
+        <mat-option *ngFor="let jobTitle of jobTitles" [value]="jobTitle.id">
+          {{ jobTitle.position }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Телефон</mat-label>
+      <input matInput formControlName="phone" />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Банковский счёт</mat-label>
+      <input matInput formControlName="bank_acc" />
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>День рождения</mat-label>
+      <input matInput formControlName="birthday" />
+    </mat-form-field>
+    <mat-dialog-actions>
+      <button mat-button type="button" (click)="onCancel()">Отмена</button>
+      <button mat-button type="submit" [disabled]="employeeForm.invalid">Сохранить</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

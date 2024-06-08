@@ -1,0 +1,28 @@
+<div class="header">
+  <img src="..\assets\1.png" alt="Camera Icon" routerLink="/home">
+  <h1 routerLink="/home">Фотоателье "Цифровое Фото"</h1>
+</div>
+<div class="container">
+    <div class="sidebar">
+      <span class="spacer"></span>
+      
+      <button mat-button *ngIf="!AuthService.isLoggedIn" routerLink="/login">Войти</button>
+      <button mat-button *ngIf="AuthService.isLoggedIn" (click)="onLogout()">Выйти</button>
+      
+      <ul>
+        <li *ngIf="AuthService.isLoggedIn"><a routerLink="/clients">Клиенты</a></li>
+        <li *ngIf="AuthService.isLoggedIn"><a routerLink="/employees">Сотрудники</a></li>
+        <li ><a routerLink="/services">Услуги</a></li>
+        <li *ngIf="AuthService.isLoggedIn"><a routerLink="/orders">Заказы</a></li>
+        <li *ngIf="AuthService.isLoggedIn"><a routerLink="/chart">Диаграмма</a></li>
+        <li *ngIf="AuthService.isLoggedIn"><a routerLink="/report">Отчёт</a></li>
+      </ul>
+      <p *ngIf="AuthService.isLoggedIn">Привет, {{ AuthService.username }}. <br>Вы успешно авторизованы!</p>
+    </div>
+    
+    <div class="main">
+      
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

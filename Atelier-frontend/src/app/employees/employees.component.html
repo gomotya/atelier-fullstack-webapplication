@@ -1,0 +1,34 @@
+<h2>Сотрудники</h2>
+<div class="add">
+  <button mat-button (click)="addEmployee()">Добавить сотрудника</button>
+</div>
+<div class="search">
+  <span><input type="text" [(ngModel)]="searchTerm" placeholder="Поиск сотрудника" class="search-input"></span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ФИО</th>
+      <th>Должность</th>
+      <th>Телефон</th>
+      <th>Реквизиты банковские</th>
+      <th>День рождения</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees | filter: searchTerm: 'fio'">
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.fio }}</td>
+      <td>{{ employee.job_title}}</td>
+      <td>{{ employee.phone }}</td>
+      <td>{{ employee.bank_acc }}</td>
+      <td>{{ employee.birthday }}</td>
+      <td>
+        <button mat-button (click)="editEmployee(employee)">Редактировать</button>
+        <button mat-button (click)="deleteEmployee(employee.id)">Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

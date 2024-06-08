@@ -1,0 +1,68 @@
+// Общий контейнер для отчета
+.report-container {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+
+  // Стили для выбора даты
+  .date-picker-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="date"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  // Стили для отображения итоговой суммы
+  .summary-container {
+    margin-top: 20px;
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}
+
+// Стили для таблицы
+  .total-label {
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .total-value {
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .download-button {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    border: none;
+    color: white; /* Белый цвет текста */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 14px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .download-button:hover {
+    background-color: #45a049; /* Темнозеленый цвет при наведении */
+  }
+  

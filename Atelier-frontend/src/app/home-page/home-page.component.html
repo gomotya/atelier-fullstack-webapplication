@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Добро пожаловать!</h1>
+    <p>Это сайт с курсовой работой по дисциплине "Управление данными".</p>
+    <p>Работу выполнил студент группы 21-КТ Головенко Матвей.</p>
+    <br>
+    <span>Количество выполненных заказов на сегодня - {{ order_date }}:</span><br>
+    <table *ngIf="info" class="data-table">
+        <thead>
+            <tr>
+                <th>Сотрудник</th>
+                <th>Количество заказов</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of info">
+                <td>{{ row.employee_name }}</td>
+                <td>{{ row.orders_count }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!AuthService.isLoggedIn" class="signature">
+        Войдите в админку чтобы ознакомиться со всем функционалом веб приложения.<br>
+        Сейчас вам доступна лишь одна страница с прейскурантом для ознакомления.</div>
+    <div *ngIf="AuthService.isLoggedIn" class="signature">
+        Здравствуйте, {{ AuthService.username }}!<br>
+            Теперь вам доступен весь функционал веб приложения.</div>
+    <p></p>
+    <div class="signature">
+        Спасибо за внимание!</div>
+  </div>

@@ -1,0 +1,32 @@
+<h2>Клиенты</h2>
+<div class="add">
+  <button mat-button (click)="addClient()">Добавить клиента</button>
+</div>
+<div class="search">
+  <span><input type="text" [(ngModel)]="searchTerm" placeholder="Поиск клиента" class="search-input"></span>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ФИО</th>
+      <th>Email</th>
+      <th>Телефон</th>
+      <th>День рождения</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clients | filter: searchTerm: 'fio'">
+      <td>{{ client.id }}</td>
+      <td>{{ client.fio }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.phone }}</td>
+      <td>{{ client.birthday }}</td>
+      <td>
+        <button mat-button (click)="editClient(client)">Редактировать</button>
+        <button mat-button (click)="deleteClient(client.id)">Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

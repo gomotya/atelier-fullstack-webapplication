@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Редактировать заказ</h2>
+<mat-dialog-content>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    
+    <mat-form-field class="form-field">
+        <mat-label>Клиент</mat-label>
+        <mat-select formControlName="client_id">
+          <mat-option *ngFor="let client of clients" [value]="client.id">
+            {{ client.fio }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="form-field">
+        <mat-label>Сотрудник</mat-label>
+        <mat-select formControlName="employee_id">
+          <mat-option *ngFor="let employee of employees" [value]="employee.id">
+            {{ employee.fio }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+      
+    <mat-form-field class="form-field">
+        <mat-label>Тип заказа</mat-label>
+        <mat-select formControlName="type_id">
+          <mat-option *ngFor="let orderType of orderTypes" [value]="orderType.id">
+            {{ orderType.type }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+      
+      <mat-form-field class="form-field">
+        <mat-label>Дата заказа</mat-label>
+        <input matInput formControlName="order_date" />
+      </mat-form-field>
+    <mat-dialog-actions>
+      <button mat-button type="submit" [disabled]="orderForm.invalid">Добавить</button>
+      <button mat-button type="button" (click)="onCancel()">Отмена</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
